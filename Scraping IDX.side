@@ -1,0 +1,326 @@
+{
+  "id": "6c8f285b-f3ad-47bf-9ef4-10d768fc6b04",
+  "version": "2.0",
+  "name": "Scraping IDX",
+  "url": "https://www.idx.co.id/id/perusahaan-tercatat/laporan-keuangan-dan-tahunan",
+  "tests": [{
+    "id": "b18afc7e-5aae-4e95-a532-879d66df1a0e",
+    "name": "Untitled",
+    "commands": [{
+      "id": "dfd3ac4f-1c95-42ac-95fe-965c4cfc1a3f",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.idx.co.id/id/perusahaan-tercatat/laporan-keuangan-dan-tahunan",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a907bc3d-d84e-4901-872a-e353611f6c63",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1048",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "49377525-22b2-48bc-8567-b6528426e4c9",
+      "comment": "",
+      "command": "click",
+      "target": "css=#vs2__combobox .vs__open-indicator > path",
+      "targets": [
+        ["css=#vs2__combobox .vs__open-indicator > path", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "5cb790c0-3b31-4a65-ab51-5bf241c17935",
+      "comment": "",
+      "command": "mouseDown",
+      "target": "id=vs2__option-2",
+      "targets": [
+        ["id=vs2__option-2", "id"],
+        ["css=#vs2__option-2", "css:finder"],
+        ["xpath=//li[@id='vs2__option-2']", "xpath:attributes"],
+        ["xpath=//ul[@id='vs2__listbox']/li[3]", "xpath:idRelative"],
+        ["xpath=//div[2]/ul/li[3]", "xpath:position"],
+        ["xpath=//li[contains(.,'36')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "da712b0a-591d-4048-a7f8-c868898757f0",
+      "comment": "",
+      "command": "mouseUp",
+      "target": "css=.bzg_c:nth-child(3) > .mb-8:nth-child(2)",
+      "targets": [
+        ["css=.bzg_c:nth-child(3) > .mb-8:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div/div[2]/div/div/div[3]/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div[3]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2f4d93c8-6015-4a6b-8996-deb366e019d6",
+      "comment": "",
+      "command": "click",
+      "target": "css=.filter",
+      "targets": [
+        ["css=.filter", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div", "xpath:idRelative"],
+        ["xpath=//main/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "eb077450-da50-4e61-81c1-d2275cc232f0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.bzg_c:nth-child(3) > .mb-8:nth-child(3) span",
+      "targets": [
+        ["css=.bzg_c:nth-child(3) > .mb-8:nth-child(3) span", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div/div[2]/div/div/div[3]/div[2]/label/span", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/label/span", "xpath:position"],
+        ["xpath=//span[contains(.,'2022')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "31483dc3-3cd0-42d3-a504-cf29553bef8c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.bzg_c:nth-child(4) > .mb-8:nth-child(5) span",
+      "targets": [
+        ["css=.bzg_c:nth-child(4) > .mb-8:nth-child(5) span", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div/div[2]/div/div/div[4]/div[4]/label/span", "xpath:idRelative"],
+        ["xpath=//div[4]/div[4]/label/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bdae5235-a2e9-4df2-93d3-f0cacfb57641",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn--wider:nth-child(2)",
+      "targets": [
+        ["css=.btn--wider:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div/div[2]/div[2]/button[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Terapkan')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "70472bdf-442f-40f7-8590-427864c4c528",
+      "comment": "",
+      "command": "click",
+      "target": "css=.bzg_c:nth-child(1) .box-title",
+      "targets": [
+        ["css=.bzg_c:nth-child(1) .box-title", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div[2]/div/div/div", "xpath:idRelative"],
+        ["xpath=//main/div/div[2]/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ffc5f7cf-35f6-4333-90ac-1800924afe7f",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.bzg_c:nth-child(1) .f-20",
+      "targets": [
+        ["css=.bzg_c:nth-child(1) .f-20", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div[2]/div/div/div/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'AALI')]", "xpath:innerText"]
+      ],
+      "value": "AALI"
+    }, {
+      "id": "d16db90b-1228-4345-9426-aa551a91a165",
+      "comment": "",
+      "command": "click",
+      "target": "css=.bzg_c:nth-child(1) .box-title",
+      "targets": [
+        ["css=.bzg_c:nth-child(1) .box-title", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div[2]/div/div/div", "xpath:idRelative"],
+        ["xpath=//main/div/div[2]/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b39c5cd7-44f2-437e-9dd0-8b972ece5cdd",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.bzg_c:nth-child(1) small",
+      "targets": [
+        ["css=.bzg_c:nth-child(1) small", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div[2]/div/div/div/small", "xpath:idRelative"],
+        ["xpath=//small", "xpath:position"]
+      ],
+      "value": "27 Februari 2023 | 18:19"
+    }, {
+      "id": "06e613c6-f41d-4659-b0a0-fd24893721d9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.bzg_c:nth-child(1) .mb-12 tr:nth-child(1) > td:nth-child(1)",
+      "targets": [
+        ["css=.bzg_c:nth-child(1) .mb-12 tr:nth-child(1) > td:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div[2]/div/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Nama')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "814a6dd7-1cfc-4072-baaa-9cd14097f4c8",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.bzg_c:nth-child(1) .mb-12 tr:nth-child(1) > td:nth-child(1)",
+      "targets": [
+        ["css=.bzg_c:nth-child(1) .mb-12 tr:nth-child(1) > td:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div[2]/div/div/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Nama')]", "xpath:innerText"]
+      ],
+      "value": "Nama"
+    }, {
+      "id": "8dbdbdfe-ab94-4774-8682-37a05bbefb9c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.bzg_c:nth-child(1) tr:nth-child(1) > .full-width",
+      "targets": [
+        ["css=.bzg_c:nth-child(1) tr:nth-child(1) > .full-width", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div[2]/div/div/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'Astra Agro Lestari Tbk')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1341085b-543b-435c-b1ce-d0f16abb7500",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.bzg_c:nth-child(1) tr:nth-child(1) > .full-width",
+      "targets": [
+        ["css=.bzg_c:nth-child(1) tr:nth-child(1) > .full-width", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div[2]/div/div/table/tbody/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'Astra Agro Lestari Tbk')]", "xpath:innerText"]
+      ],
+      "value": "Astra Agro Lestari Tbk"
+    }, {
+      "id": "45ecb06a-7be1-4ef1-b306-ea214ccbe426",
+      "comment": "",
+      "command": "click",
+      "target": "css=.bzg_c:nth-child(1) .mb-12 tr:nth-child(2) > td:nth-child(1)",
+      "targets": [
+        ["css=.bzg_c:nth-child(1) .mb-12 tr:nth-child(2) > td:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div[2]/div/div/table/tbody/tr[2]/td", "xpath:idRelative"],
+        ["xpath=//tr[2]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Tahun')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e78bec45-25d9-4ada-8d1b-6e5320152692",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.bzg_c:nth-child(1) .mb-12 tr:nth-child(2) > td:nth-child(1)",
+      "targets": [
+        ["css=.bzg_c:nth-child(1) .mb-12 tr:nth-child(2) > td:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div[2]/div/div/table/tbody/tr[2]/td", "xpath:idRelative"],
+        ["xpath=//tr[2]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Tahun')]", "xpath:innerText"]
+      ],
+      "value": "Tahun"
+    }, {
+      "id": "c4dae7d9-e3ef-48b0-86b6-d7d71e9f2300",
+      "comment": "",
+      "command": "click",
+      "target": "css=.bzg_c:nth-child(1) tr:nth-child(2) > .full-width",
+      "targets": [
+        ["css=.bzg_c:nth-child(1) tr:nth-child(2) > .full-width", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div[2]/div/div/table/tbody/tr[2]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'2022')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7c753378-86dc-4340-af8f-9ddd83da1f3d",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.bzg_c:nth-child(1) tr:nth-child(2) > .full-width",
+      "targets": [
+        ["css=.bzg_c:nth-child(1) tr:nth-child(2) > .full-width", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div[2]/div/div/table/tbody/tr[2]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'2022')]", "xpath:innerText"]
+      ],
+      "value": "2022"
+    }, {
+      "id": "39907382-2123-4436-b298-b9d22c14f2bf",
+      "comment": "",
+      "command": "click",
+      "target": "css=.bzg_c:nth-child(1) .mb-12 tr:nth-child(3) > td:nth-child(1)",
+      "targets": [
+        ["css=.bzg_c:nth-child(1) .mb-12 tr:nth-child(3) > td:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div[2]/div/div/table/tbody/tr[3]/td", "xpath:idRelative"],
+        ["xpath=//tr[3]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Periode')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0f89213a-a89d-4cb5-a43a-8b762880e322",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.bzg_c:nth-child(1) .mb-12 tr:nth-child(3) > td:nth-child(1)",
+      "targets": [
+        ["css=.bzg_c:nth-child(1) .mb-12 tr:nth-child(3) > td:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div[2]/div/div/table/tbody/tr[3]/td", "xpath:idRelative"],
+        ["xpath=//tr[3]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Periode')]", "xpath:innerText"]
+      ],
+      "value": "Periode"
+    }, {
+      "id": "bc3394b0-6720-47e9-8d09-e185f434e29c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.bzg_c:nth-child(1) tr:nth-child(3) > .full-width",
+      "targets": [
+        ["css=.bzg_c:nth-child(1) tr:nth-child(3) > .full-width", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div[2]/div/div/table/tbody/tr[3]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'Audit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c121a3b7-126d-402b-90ee-3168463bb685",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.bzg_c:nth-child(1) tr:nth-child(3) > .full-width",
+      "targets": [
+        ["css=.bzg_c:nth-child(1) tr:nth-child(3) > .full-width", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div[2]/div/div/table/tbody/tr[3]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[3]", "xpath:position"],
+        ["xpath=//td[contains(.,'Audit')]", "xpath:innerText"]
+      ],
+      "value": "Audit"
+    }, {
+      "id": "4a95ff1b-dda2-44f6-a073-1a56049475a4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.bzg_c:nth-child(1) tr:nth-child(8) .bzi-download",
+      "targets": [
+        ["css=.bzg_c:nth-child(1) tr:nth-child(8) .bzi-download", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div[2]/div/div/table[2]/tbody/tr[8]/td[2]/a/span", "xpath:idRelative"],
+        ["xpath=//tr[8]/td[2]/a/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f3d64653-d966-4ab6-90cf-c8bd45fe96c9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.bzg_c:nth-child(2) tr:nth-child(2) .bzi-download",
+      "targets": [
+        ["css=.bzg_c:nth-child(2) tr:nth-child(2) .bzi-download", "css:finder"],
+        ["xpath=//div[@id='app']/div[2]/main/div/div[2]/div[2]/div/table[2]/tbody/tr[2]/td[2]/a/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div/table[2]/tbody/tr[2]/td[2]/a/span", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "c4488694-318e-4fa3-a58b-0de882f298d2",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["b18afc7e-5aae-4e95-a532-879d66df1a0e"]
+  }],
+  "urls": [],
+  "plugins": []
+}
