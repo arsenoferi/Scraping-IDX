@@ -11,7 +11,6 @@ g = General()
 register = [
     ['kas','2','CurrentYearInstant','Kas dan setara kas'],
     ['kas','2','CurrentYearInstant','Kas'],  
-    ['jumlah_aset_lancar','2','CurrentYearInstant','Jumlah aset lancar'],
     ['jumlah_aset_lancar','2','CurrentYearInstant',['Kas dan setara kas',
                                                     'Piutang hasil investasi',
                                                     'Piutang premi',
@@ -23,8 +22,8 @@ register = [
                                                     'Investasi pada efek yang tersedia untuk dijual',
                                                     'Penyertaan saham',
                                                     'Biaya dibayar dimuka',
-                                                    'Aset pajak tangguhan']],
-    ['jumlah_aset_lancar','2','CurrentYearInstant',['Kas',
+                                                    'Aset pajak tangguhan',
+                                                    'Kas',
                                                     'Giro pada bank indonesia',
                                                     'Giro pada bank lain pihak ketiga',
                                                     'Giro pada bank lain pihak berelasi',
@@ -42,16 +41,16 @@ register = [
                                                     'Pinjaman yang diberikan pihak ketiga',
                                                     'Pinjaman yang diberikan pihak berelasi',
                                                     'Cadangan kerugian penurunan nilai pada pinjaman yang diberikan',
-                                                    'Aset keuangan lainnya',
-                                                    'Biaya dibayar dimuka',
-                                                    'Aset pajak tangguhan']],
-    ['persediaan','2','CurrentYearInstant','Persediaan lancar lainnya'],
-    ['persediaan','2','CurrentYearInstant','Aset keuangan tersedia untuk dijual'],
-    ['persediaan','2','CurrentYearInstant',['Persediaan aset real estat lancar','Persediaan lainnya']],
-    ['persediaan','2','CurrentYearInstant',['Investasi pada efek yang tersedia untuk dijual',
-                                            'Penyertaan saham']],
+                                                    'Aset keuangan lainnya'  
+                                                    ]],
+    ['jumlah_aset_lancar','2','CurrentYearInstant','Jumlah aset lancar'],                                                
     ['persediaan','2','CurrentYearInstant',['Efek-efek yang diperdagangkan pihak ketiga',
-                                            'Efek-efek yang diperdagangkan pihak berelasi']],                                        
+                                            'Efek-efek yang diperdagangkan pihak berelasi',
+                                            'Persediaan lancar lainnya',
+                                            'Aset keuangan tersedia untuk dijual',
+                                            'Persediaan aset real estat lancar',
+                                            'Persediaan lainnya',
+                                            ]],                                        
     ['piutang','2','CurrentYearInstant',['Piutang usaha pihak ketiga',
                                         'Piutang usaha pihak berelasi',
                                         'Piutang lainnya pihak ketiga',
@@ -66,7 +65,20 @@ register = [
                                         'Tagihan akseptasi pihak ketiga',
                                         'Tagihan derivatif pihak berelasi',
                                         'Pinjaman yang diberikan pihak ketiga',
-                                        'Pinjaman yang diberikan pihak berelasi']],
+                                        'Pinjaman yang diberikan pihak berelasi',
+                                        'Piutang retensi pihak ketiga',
+                                        'Biaya dibayar dimuka lancar',
+                                        'Uang muka lancar lainnya',
+                                        'Piutang ijarah pihak ketiga',
+                                        'Piutang ijarah pihak berelasi',
+                                        'Piutang pembiayaan konsumen pihak ketiga',
+                                        'Piutang pembiayaan konsumen pihak berelasi',
+                                        'Piutang nasabah pihak ketiga',
+                                        'Piutang murabahah pihak ketiga',
+                                        'Cadangan kerugian penurunan nilai pada piutang murabahah',
+                                        'Piutang ijarah pihak ketiga',
+                                        'Piutang ijarah pihak berelasi',
+                                        'Tagihan anjak piutang pihak berelasi']],
     ['jumlah_aset_tidak_lancar','2','CurrentYearInstant',['Properti investasi',
                                                         'Aset tetap',
                                                         'Aset lainnya',
@@ -113,7 +125,9 @@ register = [
                                             'Pendapatan dividen',
                                             'Penerimaan kembali aset yang telah dihapusbukukan',
                                             'Keuntungan (kerugian) selisih kurs mata uang asing',
-                                            'Keuntungan (kerugian) pelepasan aset tetap']],
+                                            'Keuntungan (kerugian) pelepasan aset tetap',
+                                            'Pendapatan pengelolaan dana oleh bank sebagai mudharib',
+                                            'Pendapatan keuangan']],
     ['pendapatan','3','CurrentYearDuration','Penjualan dan pendapatan usaha'],                                    
     ['cogs','3','CurrentYearDuration',['Beban bunga','Beban bagi hasil',
                                     'Beban keuangan',
@@ -197,10 +211,32 @@ def avg_seven_day(x):
     start_date = x['Tanggal Rilis'].strftime('%Y-%m-%d')
     end_date = x['End of Next Month'].strftime('%Y-%m-%d')
 
-    data = yf.download(company_code,start_date,end_date)
-    value = data['Adj Close'].head(7).mean()
+    ticker = yf.Ticker(company_code)
+    data = ticker.history(start=start_date, end=end_date)
+    value = data['Close'].head(7).mean()
     x['7D_Avg'] = value
     return x
+
+def jumlah_aset_tidak_lancar(data):
+    data['jumlah_aset_tidak_lancar'] = data['jumlah_aset'] - data['jumlah_aset_lancar']
+    return data
+
+def jumlah_liabilitas_jangka_pendek(data):
+    data['jumlah_liabilitas_jangka_pendek'] = data['jumlah_liabilitas'] - data['jumlah_liabilitas_jangka_panjang']
+    return data
+
+def pendapatan_cogs(data):
+    laba_bruto_null = data.copy()
+    laba_bruto_null = laba_bruto_null[laba_bruto_null['laba_bruto'].isnull()]
+
+    laba_bruto = data.copy()
+    laba_bruto = laba_bruto[~laba_bruto['laba_bruto'].isnull()]
+
+    laba_bruto_null['laba_bruto'] = laba_bruto_null['pendapatan'] + laba_bruto_null['cogs']
+    laba_bruto['cogs'] = laba_bruto['laba_bruto'] - laba_bruto['pendapatan']
+    
+    data_combine = pd.concat([laba_bruto,laba_bruto_null])
+    return data_combine
 
 if __name__ == '__main__':
     start_time = time.time()
@@ -249,15 +285,19 @@ if __name__ == '__main__':
     
     date_format = "%d %B %Y | %H:%M"
     val_list['Tanggal Rilis'] = pd.to_datetime(val_list['Tanggal Rilis'],format=date_format)
-    val_list['End of Next Month'] = val_list['Tanggal Rilis'] + timedelta(days=14)
+    val_list['End of Next Month'] = val_list['Tanggal Rilis'] + timedelta(days=60)
 
     val_list = val_list.to_dict('records')
 
-    with Pool(num_cpu) as p:
+    with Pool(cpu_var) as p:
         val_list = p.map(avg_seven_day,val_list)
     
     val_list = pd.DataFrame(val_list)
     val_list.drop(['End of Next Month'],axis=1,inplace=True)
+    val_list = val_list[val_list['laba_rugi'].notnull()]
+    #val_list = jumlah_aset_tidak_lancar(val_list)
+    #val_list = jumlah_liabilitas_jangka_pendek(val_list)
+    #val_list = pendapatan_cogs(val_list)
     val_list.to_csv("data_raw.csv",index=False)
 
     print("------------------Done------------------------")

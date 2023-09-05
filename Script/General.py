@@ -26,11 +26,20 @@ class General:
 
         multiplier = 1
         try:
-            xpath_expression_multiplier = f"//tr[td[normalize-space()='{k}']]/td[@class='valueCell']/*[@contextref='{contex}']/@sign"
+            xpath_expression_multiplier = f"//tr[td[normalize-space()='{tag}']]/td[@class='valueCell']/*[@contextref='{contex}']/@sign"
             tree_multiplier = html.fromstring(bytes_content)
             results_multiplier = tree_multiplier.xpath(xpath_expression_multiplier)[0]
             if results_multiplier == '-':
                 multiplier = -1
+        except:
+            pass
+
+        try:
+            xpath_expression_multiplier_2 = f"//tr[td[normalize-space()='{tag}']]/td[@class='valueCell']/text()"
+            tree_multiplier_2 = html.fromstring(bytes_content)
+            results_multiplier_2 = tree_multiplier_2.xpath(xpath_expression_multiplier_2)[0].strip()
+            if results_multiplier_2 == '(':
+                multiplier = -1                    
         except:
             pass
         
@@ -39,8 +48,6 @@ class General:
         result = tree.xpath(xpath_expression)
         result = result[0].strip()
         result = result.replace(',','')
-        result = result.replace('(','-')
-        result = result.replace(')','')
         result = result.strip()
         result = float(result) if result else 0
         result = result * multiplier
@@ -54,14 +61,27 @@ class General:
             bytes_content = html_content.encode('utf-8')
        
         value_total = []
+        tag = list(set(tag))
         for k in tag:
             multiplier = 1
+
             try:
                 xpath_expression_multiplier = f"//tr[td[normalize-space()='{k}']]/td[@class='valueCell']/*[@contextref='{contex}']/@sign"
                 tree_multiplier = html.fromstring(bytes_content)
                 results_multiplier = tree_multiplier.xpath(xpath_expression_multiplier)[0]
+            
                 if results_multiplier == '-':
                     multiplier = -1
+            except:
+                pass
+
+            try:
+                xpath_expression_multiplier_2 = f"//tr[td[normalize-space()='{k}']]/td[@class='valueCell']/text()"
+                tree_multiplier_2 = html.fromstring(bytes_content)
+                results_multiplier_2 = tree_multiplier_2.xpath(xpath_expression_multiplier_2)[0].strip()
+                if results_multiplier_2 == '(':
+                    multiplier = -1                    
+
             except:
                 pass
 
@@ -71,8 +91,6 @@ class General:
             try:
                 results = results[0].strip()
                 results = results.replace(',','')
-                results = results.replace('(','-')
-                results = results.replace(')','')
                 results = results.strip()
                 results = float(results) if results else 0
                 results = results * multiplier
